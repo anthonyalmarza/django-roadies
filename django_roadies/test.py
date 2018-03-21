@@ -57,6 +57,8 @@ class TestCase(DjangoTestCase):
     This is useful when testing abstract base classes.
     """
 
+    TEST_MODELS = ()
+
     @classmethod
     def setUpClass(cls, *args, **kwargs):
         """Override setUpClass to created necessary tables."""
