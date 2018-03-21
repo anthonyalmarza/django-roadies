@@ -35,3 +35,9 @@ class TestTempModelsRepeated(TestCase):
         # Person is not defined within the TestCase and is therefore out of scope
         person = Person(name='bob')
         self.assertRaises(OperationalError, person.save)
+
+
+class TestBackwardsCompatibility(TestCase):
+
+    def test_success(self):
+        self.assertTrue(True)
