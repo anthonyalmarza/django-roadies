@@ -86,7 +86,7 @@ class OnCommitMock(object):
     Usage:
 
         target = 'reelio.conversation.receivers.transaction'
-        with EagerOnCommit(target):
+        with OnCommitMock(target):
             ...execute some method that hits the target...
 
         # upon exiting any functions that were added to the target via on_commit
@@ -95,7 +95,7 @@ class OnCommitMock(object):
     Alternate Usage:
 
         target = 'reelio.conversation.receivers.transaction'
-        with EagerOnCommit(target) as transaction:
+        with OnCommitMock(target) as transaction:
             ...execute some method that hits the target...
 
             # manually trigger the the execution of any functions added to the
@@ -134,23 +134,31 @@ class OnCommitMock(object):
         again i.e. this method is idempotent.
         """
         if not self.triggered:
-            for func in self.functions:
-                result = func()
-                self.add_result(result)
-            self.triggered = True
+            try:
+                for func in self.functions:
+                    result = func()
+                    self.add_result(result)
+            finally:
+                self.triggered = True
 
     def add_result(self, result):
         """Override this method to check the result and then add it to self.results."""
         self.results.append(result)
 
-    def __enter__(self):
-        """Patch the target and set it's on_commit method to self.add."""
+    def start(self):
         self.transaction_patch = mock.patch(self.target)
         transaction_mock = self.transaction_patch.start()
         transaction_mock.on_commit = self.add
         return self
 
-    def __exit__(self, *args, **kwargs):
-        """Trigger the functions and ensure the patch has been stopped."""
+    def stop(self):
         self.trigger()
         self.transaction_patch.stop()
+
+    def __enter__(self):
+        """Patch the target and set it's on_commit method to self.add."""
+        return self.start()
+
+    def __exit__(self, *args, **kwargs):
+        """Trigger the functions and ensure the patch has been stopped."""
+        self.stop()
