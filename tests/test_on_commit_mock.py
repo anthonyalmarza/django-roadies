@@ -2,7 +2,7 @@ from __future__ import absolute_import, print_function, unicode_literals
 
 
 from django.test import TestCase
-from django_roadies.test import mock, OnCommitMock
+from roadies.test import mock, OnCommitMock
 
 from .models import do_it_later
 

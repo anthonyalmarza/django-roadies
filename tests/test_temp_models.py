@@ -1,7 +1,7 @@
 from __future__ import absolute_import, print_function, unicode_literals
 
 from django.db.utils import OperationalError
-from django_roadies.test import TempModel, TestCase
+from roadies.test import TempModel, TestCase
 
 from .models import Person, Place, ThingWithName
 
