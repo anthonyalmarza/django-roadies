@@ -1,7 +1,7 @@
 from __future__ import absolute_import, print_function, unicode_literals
 
 from django.db import models, transaction
-from django_roadies.test import TempModel
+from roadies.test import TempModel
 
 
 class ThingWithName(models.Model):

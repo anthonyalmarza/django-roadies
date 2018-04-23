@@ -23,7 +23,7 @@ class TempModel(models.Model):
                 abstract = True
 
         # in tests
-        from django_roadies.test import TempModel, TestCase
+        from roadie.test import TempModel, TestCase
         from myapp.models import MyAbstractModel
 
         class MyConcreteTestModel(TempModel, MyAbstractModel):
@@ -41,7 +41,7 @@ class TempModel(models.Model):
 
     class Meta:
         abstract = True
-        app_label = 'django_roadies'
+        app_label = 'test_roadies'
 
 
 class TestCase(DjangoTestCase):

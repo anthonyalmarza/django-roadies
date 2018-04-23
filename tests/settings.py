@@ -16,6 +16,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'tests.myapp',
 ]
 
 MIDDLEWARE = [

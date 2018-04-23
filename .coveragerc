@@ -1,5 +1,5 @@
 [run]
-source = ./django_roadies
+source = ./roadies
 omit = */tests.py
 
 [report]
