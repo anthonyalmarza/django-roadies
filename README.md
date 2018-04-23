@@ -17,3 +17,18 @@ The genesis of this project is aimed towards supporting django by making availab
 ## Usage
 
 TDB
+
+## Development
+
+Ensure docker is installed. Instructions on installing docker can be found [here](https://docs.docker.com/install/).
+Once docker is installed build the docker image by running the following script:
+
+```bash
+./bin/local/build
+```
+
+then, running tests is as simple as:
+
+```bash
+./bin/local/test
+```

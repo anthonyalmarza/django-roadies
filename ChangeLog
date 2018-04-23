@@ -1,4 +1,12 @@
 CHANGES
 =======
 
+* set unit as the default coverage prefix
+* fixes bin/test script
+* adds install-deps to workflow
+* devops cleanup
+* name refactor and adds handlers interface
+* adds start and stop interface
+* ensure TestCase backwards compatibility
+* initial version
 * Initial commit
