@@ -1,6 +1,12 @@
 CHANGES
 =======
 
+* upgrade twine
+
+0.1.1
+-----
+
+* Version bump 0.1.1: devops
 * devops cleanup
 * name refactor and adds handlers interface
 * adds start and stop interface
